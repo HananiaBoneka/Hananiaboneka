@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hanania Boneka</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    /* ?? Search box */
+    .search-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .search-container input {
+      width: 60%;
+      max-width: 400px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 10px 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Jika tidak ditemukan */
+    #notFound {
+      display: none;
+      text-align: center;
+      color: #777;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Galeri Karyaku</h1>
+
+  <!-- ?? Kotak Pencarian -->
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Cari judul gambar..." onkeyup="searchGallery()">
+  </div>
+
+  <!-- ??? Galeri Gambar -->
+  <div class="gallery" id="gallery">
+    <a href="https://shopee.co.id/(october-update)-Sumikko-gurashi-tenori-costume-original-japan-i.189347445.29151681759" target="_blank" class="card">
+      <img src="https://down-id.img.susercontent.com/file/id-11134207-81ztf-me5hrpkax4p11a.webp/400/300?random=1" alt="Gambar 1" />
+      <h3>sumikko gurashi</h3>
+    </a>
+
+    <a href="https://contoh-link2.com" target="_blank" class="card">
+      <img src="https://picsum.photos/400/300?random=2" alt="Gambar 2" />
+      <h3>Pantai Surga</h3>
+    </a>
+
+    <a href="https://contoh-link3.com" target="_blank" class="card">
+      <img src="https://picsum.photos/400/300?random=3" alt="Gambar 3" />
+      <h3>Danau Tenang</h3>
+    </a>
+
+    <a href="https://contoh-link4.com" target="_blank" class="card">
+      <img src="https://picsum.photos/400/300?random=4" alt="Gambar 4" />
+      <h3>Hutan Hijau</h3>
+    </a>
+
+    <a href="https://contoh-link5.com" target="_blank" class="card">
+      <img src="https://picsum.photos/400/300?random=5" alt="Gambar 5" />
+      <h3>Kota Malam</h3>
+    </a>
+  </div>
+
+  <div id="notFound">Tidak ada hasil yang cocok ??</div>
+
+  <script>
+    function searchGallery() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.gallery .card');
+      let found = false;
+
+      cards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        if (title.includes(input)) {
+          card.style.display = 'block';
+          found = true;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('notFound').style.display = found ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
